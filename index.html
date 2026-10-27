@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nursing Study Planner</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--ink:#192238;--muted:#6b7487;--line:#e6eaf1;--purple:#6757d9;--purple2:#eeeaff;--green:#159b72;--orange:#e69a32;--shadow:0 8px 28px rgba(31,42,68,.07)}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1200px;margin:auto;padding:22px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,#7769ed,#4e41b9);color:white;display:grid;place-items:center;font-size:23px;box-shadow:var(--shadow)}h1{font-size:clamp(23px,4vw,32px);line-height:1.15;margin:0}.sub{color:var(--muted);margin-top:5px}.pill{border-radius:999px;padding:8px 12px;background:var(--purple2);color:#5143bd;font-size:12px;font-weight:800;white-space:nowrap}.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-bottom:18px}.panel,.subject-card,.topic-card{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.panel{padding:22px}.hero-main{background:linear-gradient(120deg,#28264f,#5145a9);color:white;position:relative;overflow:hidden}.hero-main:after{content:'✦';position:absolute;font-size:180px;right:25px;top:-55px;color:#ffffff0d}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;opacity:.75;font-weight:800}.hero-main h2{font-size:25px;margin:8px 0}.hero-main p{max-width:550px;color:#e0defb;margin:0 0 16px}.date-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.date-row input{border:1px solid #ffffff40;background:#ffffff18;color:white;border-radius:10px;padding:9px 11px}.date-row input::-webkit-calendar-picker-indicator{filter:invert(1)}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.stat{border:1px solid var(--line);border-radius:15px;padding:15px}.stat strong{display:block;font-size:26px;letter-spacing:-.5px}.stat span{color:var(--muted);font-size:12px}.stat .mini{font-size:12px;color:var(--green);font-weight:700}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:25px 0 12px}.section-head h2{margin:0;font-size:20px}.muted{color:var(--muted)}.subject-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.subject-card{padding:16px;cursor:pointer;transition:.18s;border:1px solid var(--line);min-width:0}.subject-card:hover,.subject-card.active{transform:translateY(-2px);border-color:#b7afff;box-shadow:0 8px 26px #5145a91a}.subject-card.active{background:#fbfaff}.subject-icon{width:38px;height:38px;border-radius:12px;background:var(--purple2);display:grid;place-items:center;font-size:19px;margin-bottom:12px}.subject-card h3{font-size:14px;line-height:1.3;margin:0 0 8px}.tiny{font-size:11px;color:var(--muted)}.bar{height:7px;background:#eceef5;border-radius:99px;overflow:hidden;margin:10px 0 6px}.bar>i{height:100%;display:block;background:linear-gradient(90deg,#7a6cf0,#5a4bd0);border-radius:99px;transition:width .2s}.content{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(290px,.85fr);gap:16px;align-items:start}.main-panel{padding:0;overflow:hidden}.toolbar{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap}.toolbar h2{margin:0 auto 0 0;font-size:20px}.toolbar select,.search{border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:white;color:var(--ink)}.search{min-width:160px;flex:1;max-width:250px}.topic-list{padding:12px}.topic-card{box-shadow:none;border-radius:14px;margin-bottom:10px;overflow:hidden}.topic-title{padding:13px 15px;background:#fafbfe;display:flex;align-items:center;gap:10px;cursor:pointer}.topic-title strong{flex:1;font-size:14px}.topic-title .count{font-size:11px;color:var(--muted);white-space:nowrap}.topic-title .chev{color:var(--muted);transition:transform .2s}.topic-card.collapsed .topic-body{display:none}.topic-card.collapsed .chev{transform:rotate(-90deg)}.topic-body{padding:5px 13px 12px}.qrow{display:flex;align-items:flex-start;gap:10px;padding:11px 3px;border-bottom:1px solid #f0f2f6}.qrow:last-child{border-bottom:0}.qrow input{appearance:none;flex:0 0 19px;width:19px;height:19px;border:1.7px solid #c9cedb;border-radius:6px;margin:2px 0 0;cursor:pointer;background:white}.qrow input:checked{background:var(--green);border-color:var(--green)}.qrow input:checked:after{content:'✓';display:block;color:white;text-align:center;font-size:13px;font-weight:900;line-height:17px}.qtext{flex:1;font-size:13px;line-height:1.48}.qrow.done .qtext{color:#8991a1;text-decoration:line-through}.tag{display:inline-block;border-radius:6px;font-size:10px;padding:3px 6px;margin:0 6px 4px 0;font-weight:800;vertical-align:1px}.tag.short{background:#e8f4ff;color:#2166a6}.tag.essay{background:#fff0df;color:#9b5b0a}.qyear{font-size:10px;color:#9299a8;margin-top:4px}.add-btn,.primary,.secondary{border:0;border-radius:10px;padding:10px 13px;font-weight:750}.add-btn,.primary{background:var(--purple);color:white}.secondary{background:#f0efff;color:#5143bd}.side{display:grid;gap:16px}.side .panel{padding:18px}.side h3{margin:0 0 5px;font-size:17px}.side p{margin:0 0 14px;font-size:12px;color:var(--muted)}.plan-day{border:1px solid var(--line);border-radius:12px;padding:11px;margin-top:9px}.plan-day .daytop{display:flex;justify-content:space-between;gap:8px;font-weight:800;font-size:12px}.plan-day ul{margin:8px 0 0;padding-left:17px;color:var(--muted);font-size:12px}.plan-day li{margin:4px 0}.plan-day .complete{color:var(--green)}.empty{padding:25px;text-align:center;color:var(--muted);font-size:13px}.footer{text-align:center;color:#9299a8;font-size:11px;padding:24px 0 10px}.notice{font-size:11px;color:var(--muted);margin-top:9px}.hidden{display:none!important}.reset{color:#8a5360;background:#fff0f2;border:0;padding:8px 10px;border-radius:9px;font-size:12px}
+@media(max-width:950px){.subject-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.content{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:560px){.app{padding:13px}.top{align-items:flex-start}.pill{display:none}.subject-grid{gap:8px}.subject-card{padding:12px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{padding:16px}.toolbar{padding:14px}.search{max-width:none;min-width:120px}.toolbar h2{width:100%}.date-row input{width:100%}.date-row{align-items:stretch}}
+</style>
+</head><body><div class="app">
+<header class="top"><div class="brand"><div class="logo">✚</div><div><h1>Nursing Study Planner</h1><div class="sub">Your 5-subject exam roadmap · Track every question</div></div></div><span class="pill">BSc Nursing · Exam Prep</span></header>
+<section class="hero"><div class="panel hero-main"><div class="eyebrow">Your finish line</div><h2>Small progress. Every single day.</h2><p>Finish your first round before the target date, then keep the remaining days for revision and past-paper practice.</p><div class="date-row"><label for="deadline" style="font-size:12px;font-weight:700">Target finish date</label><input type="date" id="deadline" value="2026-12-17"><button class="secondary" id="replan">Update plan</button></div><div class="notice" style="color:#dcd9ff">Target is adjustable because your exact exam date has not been confirmed.</div></div><div class="panel"><div class="stats"><div class="stat"><strong id="totalQ">0</strong><span>Total questions</span></div><div class="stat"><strong id="doneQ">0</strong><span>Completed</span></div><div class="stat"><strong id="overall">0%</strong><span>Overall progress</span></div><div class="stat"><strong id="leftQ">0</strong><span>Still to do</span><div class="mini" id="daysLeft">— days to target</div></div></div></div></section>
+<div class="section-head"><h2>Your subjects</h2><span class="muted" id="subjectSummary">5 subjects</span></div><section class="subject-grid" id="subjectGrid"></section>
+<div class="content"><section class="panel main-panel"><div class="toolbar"><h2 id="listTitle">All questions</h2><select id="kindFilter" aria-label="Question type"><option value="all">All types</option><option value="Short">Short questions</option><option value="Essay">Essay questions</option></select><select id="statusFilter" aria-label="Completion status"><option value="all">All status</option><option value="todo">Not completed</option><option value="done">Completed</option></select><input id="search" class="search" placeholder="Search questions…" aria-label="Search questions"></div><div id="topicList" class="topic-list"></div></section>
+<aside class="side"><section class="panel"><h3>📅 Daily study plan</h3><p>Every unfinished question from all 5 subjects and every topic is assigned to a date. Set your daily study hours below.</p><label class="tiny" for="studyHours">Study hours per day</label><select id="studyHours" style="width:100%;margin:5px 0 10px;padding:10px;border:1px solid var(--line);border-radius:10px"><option value="2">2 hours</option><option value="3">3 hours</option><option value="4" selected>4 hours</option><option value="5">5 hours</option><option value="6">6 hours</option><option value="7">7 hours</option><option value="8">8 hours</option></select><div id="planList"></div><div class="notice">The plan spreads questions across the full schedule and mixes subjects/topics each day. Study time is an estimate: short question ≈ 20 min; essay ≈ 45 min.</div></section><section class="panel"><h3>＋ Add a question</h3><p>Add a new question to any subject and topic. It will count toward progress automatically.</p><label class="tiny" for="addSubject">Subject</label><select id="addSubject" style="width:100%;margin:5px 0 10px;padding:10px;border:1px solid var(--line);border-radius:10px"></select><label class="tiny" for="addTopic">Topic name</label><input id="addTopic" placeholder="e.g. Topic 05: Shock" style="width:100%;margin:5px 0 10px;padding:10px;border:1px solid var(--line);border-radius:10px"><label class="tiny" for="addKind">Question type</label><select id="addKind" style="width:100%;margin:5px 0 10px;padding:10px;border:1px solid var(--line);border-radius:10px"><option>Short</option><option>Essay</option></select><label class="tiny" for="addText">Question</label><textarea id="addText" rows="4" placeholder="Type your question here…" style="width:100%;margin:5px 0 12px;padding:10px;border:1px solid var(--line);border-radius:10px;resize:vertical"></textarea><button class="add-btn" id="addQuestion" style="width:100%">＋ Add question</button><div class="notice">Your progress is saved in this browser on this device. Use the same browser to continue later.</div></section><section class="panel"><h3>Manage your planner</h3><p>Export a backup or restore it later on this device/browser.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" id="exportBtn">Export backup</button><label class="secondary" style="cursor:pointer">Import backup<input id="importFile" type="file" accept="application/json" style="display:none"></label><button class="reset" id="resetBtn">Reset checkmarks</button></div></section></aside></div>
+<div class="footer">Made for your nursing exam preparation · Progress is stored locally in your browser.</div></div>
+<script>
+const seed = [
+// Subject 1
+['Medical & Surgical Nursing and Pathophysiology','Topic 01: Benign Prostatic Hyperplasia (BPH)','Short','State the clinical features of benign prostatic hyperplasia. Mention the investigation & post-operative complications of BPH. [DU-Jan:16]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 01: Benign Prostatic Hyperplasia (BPH)','Short','Define benign prostatic hyperplasia. State the causes of benign prostatic hyperplasia. [DU-Jan:20]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 01: Benign Prostatic Hyperplasia (BPH)','Short','Explain the nursing management of a patient with benign prostatic hyperplasia. [DU-Jan:22]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 01: Benign Prostatic Hyperplasia (BPH)','Essay','What is Benign Prostatic Hyperplasia (BPH)? Write down the clinical features & post-operative complications of BPH. [DU-Jan:19]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 01: Benign Prostatic Hyperplasia (BPH)','Essay','Explain the nursing management of a benign prostatic hyperplasia patient. [DU-Jan:21]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 02: Sexually Transmitted Disease (STD)','Short','Define & classify STD. How can you control STD? [DU-Jan:20]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 02: Sexually Transmitted Disease (STD)','Short','Mention the names of sexually transmitted diseases (STDs). Write down the risk factors of STDs. [DU-Jan:21]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 02: Sexually Transmitted Disease (STD)','Short','Define sexually transmitted disease. List the signs and symptoms of STDs. [DU-Jan:22]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 02: Sexually Transmitted Disease (STD)','Short','Define sexually transmitted disease. Write down the risk factors. [DU-June:24]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 02: Sexually Transmitted Disease (STD)','Essay','Describe the roles of nurses in prevention & control of STDs. [DU-July:12]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 08: Hematologic & Lymphatic System (Anemia)','Short','Define anemia. Write down the etiology & clinical features of anemia. [DU-Aug:13]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 08: Hematologic & Lymphatic System (Anemia)','Essay','Define anemia. Write down the classification of anemia. [DU-Jan:19]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 09: Iron Deficiency Anemia','Essay','Define anemia. Write down its classification. Enumerate the common causes & preventive measures of iron deficiency anemia. [DU-June:24, Jan:23,19]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 10: Megaloblastic Anemia','Short','Define megaloblastic anemia. Write down its etiology. [DU-Jan:22,21,12,13]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 10: Megaloblastic Anemia','Short','Write down the clinical features of megaloblastic anemia. [DU-Jan:15,14,13]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 11: Aplastic Anemia','Short','Define aplastic anemia. [DU-Aug:14]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 12: Thalassemia','Short','Define & classify thalassemia. [DU-Jan:23,19]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 13: Bleeding Disorder','Short','What are the causes of bleeding disorder? [DU-Jan:12]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 13: Bleeding Disorder','Short','List the disorders associated with erythrocytes & leucocytes. [DU-Jan:15,14,13]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 13: Bleeding Disorder','Short','Define bleeding disorder. State the causes of bleeding disorder. [DU-Jan:22,20]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 13: Bleeding Disorder','Short','Write down the disorders associated with erythrocytes.'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 14: Leukemia','Essay','Write down the clinical manifestations & nursing management of a patient with acute lymphocytic leukemia. [DU-Jan:12]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 14: Leukemia','Essay','Define leukemia. Explain the nursing interventions for a chronic lymphocytic leukemia patient. [DU-Jan:22,21]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 15: Lymphoma','Short','Define lymphoma. [DU-Jan:16,15,14]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 15: Lymphoma','Short','Classify lymphoma. [DU-Jan:16]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 15: Lymphoma','Short','Define Hodgkin’s lymphoma with clinical features. [DU-Jan:12]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 15: Lymphoma','Short','State the functions of the lymphatic system.'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 15: Lymphoma','Essay','Differentiate between Hodgkin’s lymphoma & Non-Hodgkin’s lymphoma. [DU-Jan:19,15,14]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 15: Lymphoma','Essay','What do you mean by Hodgkin’s lymphoma? Describe its nursing management. [DU-Jan:13]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 15: Lymphoma','Essay','Define lymphoma. Write down the clinical features and nursing management of Hodgkin’s lymphoma. [DU-Jan:20]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 15: Lymphoma','Essay','Define lymphoma. Differentiate between Hodgkin’s lymphoma & Non-Hodgkin’s lymphoma. [DU-Jan:22]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 16: Hemophilia','Short','Define hemophilia. Classify hemophilia. Write down its clinical features. [DU-June:24, Jan:20]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 16: Hemophilia','Essay','What do you mean by hemophilia? Write down the management of a hemophilia patient. [DU-Aug:13]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 23: Pain','Short','Define pain. Explain the steps of pain assessment. [DU-June:24, Jan:22,21,20,19]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 23: Pain','Short','Explain briefly the steps of pain according to pathophysiology. [DU-Jan:17,15,14,13]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 23: Pain','Short','What are the consequences of untreated pain? [DU-Jan:23]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 23: Pain','Short','Briefly describe non-drug therapy for pain management. [DU-June:24, Jan:23]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 24: Palliative Care','Short','Define palliative care. [DU-Jan:16]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 24: Palliative Care','Essay','What do you mean by palliative care? Write down its management & nursing interventions. [DU-Jan:20,19]'],
+['Medical & Surgical Nursing and Pathophysiology','Topic 24: Palliative Care','Essay','What do you mean by palliative care? Write down its aims/importance. [DU-Jan:23,15,14,13,12]'],
+// Subject 2
+['Gerontological Nursing','Topic 01: Introduction of Gerontological Nursing','Short','Define gerontology & gerontological nursing. [DU-June:24, Jan:23,22,19,16,14]'],
+['Gerontological Nursing','Topic 01: Introduction of Gerontological Nursing','Short','What are the characteristics of old age? [DU-Jan:19]'],
+['Gerontological Nursing','Topic 01: Introduction of Gerontological Nursing','Short','What are the characteristics of ageing people? [DU-Jan:23,22]'],
+['Gerontological Nursing','Topic 01: Introduction of Gerontological Nursing','Short','List the principles of geriatric care. [DU-June:24]'],
+['Gerontological Nursing','Topic 02: Demographic Trends','Short','Define demography. [DU-June:24, Jan:14]'],
+['Gerontological Nursing','Topic 02: Demographic Trends','Short','What do you mean by morbidity and life expectancy? [DU-June:24]'],
+['Gerontological Nursing','Topic 03: Theories of Aging','Short','Define theory. [DU-July:12, Aug:13]'],
+['Gerontological Nursing','Topic 03: Theories of Aging','Short','What are the major theories of aging? [DU-Jan:20,16,14]'],
+['Gerontological Nursing','Topic 03: Theories of Aging','Short','Mention the theories of ageing. [DU-Jan:23]'],
+['Gerontological Nursing','Topic 03: Theories of Aging','Short','What do you mean by aging process? [DU-June:24]'],
+['Gerontological Nursing','Topic 04: Overview of Common Aging Changes','Short','List the common aging changes in elderly people. [DU-Jan:20,16]'],
+['Gerontological Nursing','Topic 04: Overview of Common Aging Changes','Essay','Describe the common physiological changes of elderly people. [DU-Jan:17]'],
+['Gerontological Nursing','Topic 04: Overview of Common Aging Changes','Essay','Discuss physiological changes in elderly people. What precautions can overcome common ageing changes? [DU-Jan:20]'],
+['Gerontological Nursing','Topic 04: Overview of Common Aging Changes','Essay','State common physiological changes in older persons. How will you promote their mental health? [DU-Jan:23]'],
+['Gerontological Nursing','Topic 05: Health Care Settings & Services','Short','List the public services provided for elderly people in Bangladesh. [DU-Jan:16]'],
+['Gerontological Nursing','Topic 05: Health Care Settings & Services','Short','Name the specific services required for older persons. [DU-Jan:14]'],
+['Gerontological Nursing','Topic 05: Health Care Settings & Services','Essay','Explain the basic nursing role for older people. [DU-Jan:16]'],
+['Gerontological Nursing','Topic 05: Health Care Settings & Services','Essay','Write down the roles of a gerontological nurse. [DU-Jan:17,14]'],
+['Gerontological Nursing','Topic 08: Common Health Problems of Elder Population','Short','Name the common health problems of elderly people in Bangladesh. [DU-June:24, Jan:20,17]'],
+['Gerontological Nursing','Topic 08: Common Health Problems of Elder Population','Short','What common infections occur in elderly people? [DU-Jan:21,16]'],
+['Gerontological Nursing','Topic 08: Common Health Problems of Elder Population','Short','Mention the impact of common chronic illness on elderly people. [DU-Jan:21]'],
+['Gerontological Nursing','Topic 08: Common Health Problems of Elder Population','Short','What do you mean by coping and chronic illness? [DU-Jan:23]'],
+['Gerontological Nursing','Topic 08: Common Health Problems of Elder Population','Short','Write down strategies for coping with chronic illness. [DU-Jan:23]'],
+['Gerontological Nursing','Topic 08: Common Health Problems of Elder Population','Essay','Explain common health problems of older people in Bangladesh. [DU-Jan:22,19,14,12]'],
+['Gerontological Nursing','Topic 08: Common Health Problems of Elder Population','Essay','Mention the psychological problems of elderly people. [DU-Jan:17]'],
+['Gerontological Nursing','Topic 10: Activity & Exercise','Short','What do you mean by physical activity? Write down the benefits of exercise for elderly people. [DU-June:24, Jan:21,13,12]'],
+['Gerontological Nursing','Topic 10: Activity & Exercise','Short','How many types of exercise are there? What are the benefits of physical exercise for older adults? [DU-Jan:13]'],
+['Gerontological Nursing','Topic 10: Activity & Exercise','Short','Write down the benefits of exercise in elderly people. [DU-Jan:23]'],
+['Gerontological Nursing','Topic 10: Activity & Exercise','Short','What do you mean by activity? [DU-Jan:23]'],
+['Gerontological Nursing','Topic 11: Nutrition & Elimination','Short','Define nutrition & elimination.'],
+['Gerontological Nursing','Topic 11: Nutrition & Elimination','Short','Discuss the nutritional needs of elderly people.'],
+['Gerontological Nursing','Topic 11: Nutrition & Elimination','Short','List a proper diet for elderly people for a healthy life. [DU-June:24, Jan:23]'],
+['Gerontological Nursing','Topic 11: Nutrition & Elimination','Short','What are the elimination problems of elderly people? [DU-June:24]'],
+['Gerontological Nursing','Topic 13: Sleep & Rest','Short','Define sleep & rest. [DU-Jan:21,19,17,12, Aug:13]'],
+['Gerontological Nursing','Topic 13: Sleep & Rest','Short','Write down the benefits of sleep for elderly people. [DU-Jan:12]'],
+['Gerontological Nursing','Topic 13: Sleep & Rest','Short','How will you promote mental relaxation techniques for an older adult? [DU-Jan:21,19]'],
+['Gerontological Nursing','Topic 13: Sleep & Rest','Short','As a gerontological nurse, how will you promote sleep in an elderly patient? [DU-Jan:17]'],
+['Gerontological Nursing','Topic 13: Sleep & Rest','Short','State the benefits of rest & sleep. [DU-June:24, Jan:23,22]'],
+['Gerontological Nursing','Topic 26: Endocrine Problems','Short','Mention the endocrine problems in elderly people.'],
+['Gerontological Nursing','Topic 26: Endocrine Problems','Short','Define hypothyroidism. Write down its signs & symptoms. [DU-June:24]'],
+['Gerontological Nursing','Topic 27: Diabetes Mellitus','Essay','Explain the nursing management of diabetes mellitus. [DU-Jan:13, July:12]'],
+['Gerontological Nursing','Topic 27: Diabetes Mellitus','Essay','Differentiate type I and type II diabetes mellitus. As a gerontological nurse, describe nursing management. [DU-Jan:23,20]'],
+['Gerontological Nursing','Topic 27: Diabetes Mellitus','Essay','Define diabetes mellitus. Write down its complications and nursing management for an elderly patient. [DU-Jan:22]'],
+['Gerontological Nursing','Topic 27: Diabetes Mellitus','Essay','Define diabetes mellitus. Write down clinical features, nursing management and prevention in an older person. [DU-June:24]'],
+// Subject 3
+['Community Health Nursing','Topic 01: Community & Community Health Nursing','Short','Define community. [DU-Jan:23,21,15]'],
+['Community Health Nursing','Topic 01: Community & Community Health Nursing','Short','Write down the nurse’s role in a community setting. [DU-Jan:21]'],
+['Community Health Nursing','Topic 01: Community & Community Health Nursing','Short','Write down the roles and responsibilities of a community health nurse. [DU-Jan:21]'],
+['Community Health Nursing','Topic 01: Community & Community Health Nursing','Short','Define community health nursing. [DU-June:24, Jan:22]'],
+['Community Health Nursing','Topic 01: Community & Community Health Nursing','Short','State the functions of a community health nurse. [DU-Jan:22]'],
+['Community Health Nursing','Topic 01: Community & Community Health Nursing','Short','What do you mean by community empowerment? [DU-Jan:22]'],
+['Community Health Nursing','Topic 01: Community & Community Health Nursing','Short','State the principles of community empowerment. [DU-Jan:22]'],
+['Community Health Nursing','Topic 01: Community & Community Health Nursing','Short','State the characteristics of a community. [DU-Jan:23]'],
+['Community Health Nursing','Topic 01: Community & Community Health Nursing','Short','What do you mean by community health? [DU-Jan:23]'],
+['Community Health Nursing','Topic 01: Community & Community Health Nursing','Short','Enlist common community health problems in Bangladesh. [DU-June:24, Jan:23]'],
+['Community Health Nursing','Topic 01: Community & Community Health Nursing','Short','Write down the objectives of community health nursing. [DU-June:24]'],
+['Community Health Nursing','Topic 02: Concept of Health','Short','Define health. [DU-Jan:20,12]'],
+['Community Health Nursing','Topic 02: Concept of Health','Short','Define health according to WHO. [DU-June:24, Jan:22]'],
+['Community Health Nursing','Topic 02: Concept of Health','Short','Mention common health problems in Bangladesh. [DU-Jan:22]'],
+['Community Health Nursing','Topic 02: Concept of Health','Short','What are the indicators of health? [DU-Jan:22]'],
+['Community Health Nursing','Topic 02: Concept of Health','Short','Write down the characteristics of good health. [DU-Jan:22]'],
+['Community Health Nursing','Topic 03: Primary Health Care','Essay','Define Primary Health Care (PHC). Write down the elements and principles of PHC. [DU-June:24, Jan:22]'],
+['Community Health Nursing','Topic 03: Primary Health Care','Essay','Define PHC, write its elements, and explain the role of nurses in PHC. [DU-Jan:23]'],
+['Community Health Nursing','Topic 12: Family & Family Health','Short','Define family. [DU-Jan:20,16]'],
+['Community Health Nursing','Topic 12: Family & Family Health','Short','Define family health. [DU-June:24, Jan:20,16]'],
+['Community Health Nursing','Topic 12: Family & Family Health','Short','Write down the types of family. Briefly discuss any two types. [DU-Jan:20]'],
+['Community Health Nursing','Topic 12: Family & Family Health','Short','Define family intervention. Mention the objectives of family health nursing. [DU-Jan:20,16]'],
+['Community Health Nursing','Topic 12: Family & Family Health','Short','Define family assessment. Explain the methods of family assessment. [DU-Jan:21]'],
+['Community Health Nursing','Topic 12: Family & Family Health','Short','What do you mean by family health nursing? [DU-Jan:22]'],
+['Community Health Nursing','Topic 12: Family & Family Health','Short','Write down common characteristics of healthy and unhealthy families. [DU-June:24]'],
+['Community Health Nursing','Topic 12: Family & Family Health','Essay','Define family nurse. Enumerate the roles & responsibilities of nurses in family health care. [DU-Jan:20,17]'],
+['Community Health Nursing','Topic 22: Family Planning','Short','Define family planning. [DU-June:24, Jan:16,12]'],
+['Community Health Nursing','Topic 22: Family Planning','Essay','Define family health. Explain different types of family planning methods. [DU-Jan:17]'],
+['Community Health Nursing','Topic 22: Family Planning','Essay','Define family planning and describe the different methods.'],
+['Community Health Nursing','Topic 22: Family Planning','Essay','Define family planning. Enlist methods and describe the advantages of oral contraceptive pills. [DU-Jan:22,17,13]'],
+['Community Health Nursing','Topic 23: Contraception & OCP','Short','Enumerate the indications of oral contraceptive pills. [DU-Jan:17]'],
+['Community Health Nursing','Topic 23: Contraception & OCP','Short','Define contraception. [DU-Jan:13]'],
+['Community Health Nursing','Topic 23: Contraception & OCP','Short','Describe the advantages and disadvantages of oral contraceptive pills. [DU-June:24]'],
+['Community Health Nursing','Topic 23: Contraception & OCP','Essay','Describe the advantages and disadvantages of oral contraceptive pills. [DU-Jan:22]'],
+['Community Health Nursing','Topic 40: Communicable & Non-Communicable Disease','Short','Define communicable disease. [DU-Jan:23,17,13,12]'],
+['Community Health Nursing','Topic 40: Communicable & Non-Communicable Disease','Short','State common communicable diseases in Bangladesh. [DU-Jan:17,15]'],
+['Community Health Nursing','Topic 40: Communicable & Non-Communicable Disease','Short','Define non-communicable disease. [DU-Jan:17]'],
+['Community Health Nursing','Topic 40: Communicable & Non-Communicable Disease','Short','Write down the differences between communicable and non-communicable diseases. [DU-Jan:20]'],
+['Community Health Nursing','Topic 40: Communicable & Non-Communicable Disease','Short','Mention major communicable and non-communicable diseases. [DU-Jan:23]'],
+['Community Health Nursing','Topic 41: School Health Services','Short','What do you mean by school health problems? [DU-Jan:19]'],
+['Community Health Nursing','Topic 41: School Health Services','Short','What do you mean by school health service? [DU-Jan:16]'],
+['Community Health Nursing','Topic 41: School Health Services','Short','State school health problems among school-age children. [DU-Jan:19,16,12]'],
+['Community Health Nursing','Topic 41: School Health Services','Short','Define school health nurse. [DU-Jan:22]'],
+['Community Health Nursing','Topic 41: School Health Services','Short','Mention common school health problems in Bangladesh. [DU-June:24, Jan:22]'],
+['Community Health Nursing','Topic 41: School Health Services','Short','Define school health. [DU-June:24]'],
+['Community Health Nursing','Topic 41: School Health Services','Essay','Define school health. Enlist school health problems among school children and describe the roles and responsibilities of a school health nurse. [DU-Jan:23]'],
+['Community Health Nursing','Topic 42: Immunization','Essay','Define immunization and vaccination. State the importance of immunization and its updated schedule. [DU-Jan:22]'],
+['Community Health Nursing','Topic 42: Immunization','Essay','Define immunization and vaccination. Describe the current immunization schedule. [DU-Jan:23]'],
+['Community Health Nursing','Topic 42: Immunization','Essay','Define immunization and vaccination. Write down the updated schedule according to WHO. [DU-June:24]'],
+['Community Health Nursing','Topic 42: Self Care','Short','Define self-care. Write down its management. [DU-Jan:19]'],
+['Community Health Nursing','Topic 42: Self Care','Short','Define self-care. Write down its importance. [DU-Jan:23]'],
+['Community Health Nursing','Topic 42: Self Care','Short','Define self-care. Write down its benefits. [DU-June:24]'],
+['Community Health Nursing','Topic 42: Self Care','Essay','Define self-care. Explain its management. [DU-Jan:20]'],
+// Subject 4
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Short','Define mental health. [DU-June:24, Jan:23,22,19,18,15]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Short','Write down the characteristics of a mentally ill person. [DU-Jan:19]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Short','What are the characteristics of a mentally healthy person? [DU-Jan:16,15]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Short','Describe briefly the causes of mental illness. [DU-Jan:15]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Short','What does mental disorder mean? [DU-Jan:20]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Short','Mention the causes and risk factors of mental disorder. [DU-Jan:20]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Short','Define mental illness. Differentiate between mentally ill and healthy persons. [DU-Jan:21]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Short','Enlist the points used to examine mental status. [DU-Jan:22]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Short','What is mental illness? [DU-Jan:22]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Short','Define health and mental health. [DU-Jan:23]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Short','Enlist the types of mental health disorders. [DU-Jan:23]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Short','What is nursing ethics? [DU-Jan:23]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Short','How many rights do patients with mental disorders have? [DU-Jan:23]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Essay','What are the classifications of mental disorders according to ICD-10? [DU-Jan:19,18,17]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Essay','Write down the classification of psychiatric disorders. [DU-Jan:16]'],
+['Psychiatric Nursing','Topic 01: Introduction of Mental Health & Illness','Essay','Describe the preventive measures of mental illness. [DU-Jan:15]'],
+['Psychiatric Nursing','Topic 11: Schizophrenia','Short','Define schizophrenia. Write down its positive and negative symptoms. [DU-Jan:20]'],
+['Psychiatric Nursing','Topic 11: Schizophrenia','Essay','Define schizophrenia. Write down positive and negative signs/symptoms and nursing care of a patient with schizophrenia. [DU-Jan:23,21,19,18,17,16,15]'],
+['Psychiatric Nursing','Topic 12: Organic Affective Disorder & Mood Disorder','Short','What are the signs and symptoms of mania? [DU-Jan:16]'],
+['Psychiatric Nursing','Topic 12: Organic Affective Disorder & Mood Disorder','Short','Define mood disorder. What are its classifications? [DU-Jan:15]'],
+['Psychiatric Nursing','Topic 12: Organic Affective Disorder & Mood Disorder','Short','What is mania? What are the types of mania? [DU-Jan:15]'],
+['Psychiatric Nursing','Topic 12: Organic Affective Disorder & Mood Disorder','Essay','What is mood disorder? Write clinical features of bipolar mood disorder. How will you manage major depressive disorder? [DU-June:24, Jan:20]'],
+['Psychiatric Nursing','Topic 12: Organic Affective Disorder & Mood Disorder','Essay','Define mania. Write down its causes & nursing management. [DU-Jan:20]'],
+['Psychiatric Nursing','Topic 12: Organic Affective Disorder & Mood Disorder','Essay','Define mania. How will you recognize a manic patient? Explain nursing care interventions. [DU-Jan:22]'],
+['Psychiatric Nursing','Topic 13: Psychosomatic Disorder','Short','Define somatoform disorder. Classify somatoform disorder. [DU-June:24]'],
+['Psychiatric Nursing','Topic 13: Psychosomatic Disorder','Essay','Define somatoform disorder. What are its causes and nursing management? [DU-Jan:18]'],
+['Psychiatric Nursing','Topic 13: Psychosomatic Disorder','Essay','What are common presentations of conversion disorder? How will you manage it? [DU-Jan:17]'],
+['Psychiatric Nursing','Topic 13: Psychosomatic Disorder','Essay','Define somatoform disorder. Write down its causes, signs & symptoms. [DU-Jan:15]'],
+['Psychiatric Nursing','Topic 13: Psychosomatic Disorder','Essay','Define somatoform disorder. How will you identify it? Make a nursing care plan. [DU-Jan:22]'],
+['Psychiatric Nursing','Topic 16: Antipsychotic Drugs','Short','Enlist five antipsychotic drugs. What are their side effects? [DU-June:24, Jan:23,21]'],
+['Psychiatric Nursing','Topic 16: Electroconvulsive Therapy (ECT)','Short','What are the indications and contraindications of ECT? Explain nursing management before and after the procedure. [DU-Jan:20]'],
+['Psychiatric Nursing','Topic 16: Electroconvulsive Therapy (ECT)','Short','Define ECT. Explain the nurse’s role before, during and after ECT. Mention complications. [DU-Jan:21]'],
+['Psychiatric Nursing','Topic 16: Electroconvulsive Therapy (ECT)','Short','Define conversion disorder. [DU-Jan:23]'],
+['Psychiatric Nursing','Topic 16: Electroconvulsive Therapy (ECT)','Short','Differentiate between pseudo-seizure and epileptic seizure. [DU-June:24, Jan:23]'],
+['Psychiatric Nursing','Topic 17: Suicide','Essay','Define suicide. What are the warning signs and prevention measures? How will you care for a patient after a suicide attempt? [DU-Jan:21]'],
+['Psychiatric Nursing','Topic 17: Suicide','Essay','Define suicide. Mention different types. As a graduate nurse, how will you manage a patient with suicidal thoughts? [DU-Jan:21]'],
+// Subject 5
+['Emergency & Critical Care Nursing','Topic 01: Introduction of Emergency & Critical Care Nursing','Short','Define critical care nursing. [DU-Jan:14,12]'],
+['Emergency & Critical Care Nursing','Topic 01: Introduction of Emergency & Critical Care Nursing','Short','Define emergency nursing. [DU-June:24, Jan:23,22,17,14,12]'],
+['Emergency & Critical Care Nursing','Topic 01: Introduction of Emergency & Critical Care Nursing','Short','Write down the differences between emergency nursing and critical care nursing. [DU-June:24, Jan:23,18,16,14]'],
+['Emergency & Critical Care Nursing','Topic 01: Introduction of Emergency & Critical Care Nursing','Short','What are the predisposing factors of critical illness? [DU-Jan:19,16, Aug:13]'],
+['Emergency & Critical Care Nursing','Topic 01: Introduction of Emergency & Critical Care Nursing','Short','How is emergency nursing different from other nursing? [DU-Jan:13,12]'],
+['Emergency & Critical Care Nursing','Topic 01: Introduction of Emergency & Critical Care Nursing','Short','What are the roles of critical care nurses? [DU-Jan:12]'],
+['Emergency & Critical Care Nursing','Topic 01: Introduction of Emergency & Critical Care Nursing','Short','In what conditions will you admit a patient to the critical care unit? [DU-Jan:19]'],
+['Emergency & Critical Care Nursing','Topic 01: Introduction of Emergency & Critical Care Nursing','Short','What is critical care medicine? Name factors differentiating ICU from other hospital wards. [DU-Jan:20]'],
+['Emergency & Critical Care Nursing','Topic 01: Introduction of Emergency & Critical Care Nursing','Short','What is emergency nursing? Name common equipment needed in an ICU. [DU-Jan:21]'],
+['Emergency & Critical Care Nursing','Topic 01: Introduction of Emergency & Critical Care Nursing','Short','Mention the principles of emergency management. [DU-Jan:22]'],
+['Emergency & Critical Care Nursing','Topic 01: Introduction of Emergency & Critical Care Nursing','Essay','What is critical care nursing? Differentiate critical care nursing and emergency nursing care. [DU-Jan:17,14]'],
+['Emergency & Critical Care Nursing','Topic 01: Introduction of Emergency & Critical Care Nursing','Essay','What types of emergency cases do you face in the emergency department? [DU-Jan:17,14]'],
+['Emergency & Critical Care Nursing','Topic 02: Palliative Care & End-of-Life Care','Short','Define palliative care. Write down its roles and responsibilities. [DU-Jan:14]'],
+['Emergency & Critical Care Nursing','Topic 02: Palliative Care & End-of-Life Care','Short','Mention seven major legal myths regarding end-of-life care. [DU-Jan:14]'],
+['Emergency & Critical Care Nursing','Topic 02: Palliative Care & End-of-Life Care','Short','Define end-of-life care. Mention its importance. [DU-Jan:23,21,20]'],
+['Emergency & Critical Care Nursing','Topic 02: Palliative Care & End-of-Life Care','Short','Define palliative care. State its aims. [DU-Jan:13]'],
+['Emergency & Critical Care Nursing','Topic 02: Palliative Care & End-of-Life Care','Short','What is palliative care? Mention its goals. [DU-Jan:21,13]'],
+['Emergency & Critical Care Nursing','Topic 02: Palliative Care & End-of-Life Care','Short','What is euthanasia? [DU-June:24, Jan:22]'],
+['Emergency & Critical Care Nursing','Topic 02: Palliative Care & End-of-Life Care','Short','Write down advantages and disadvantages of euthanasia. [DU-June:24, Jan:22]'],
+['Emergency & Critical Care Nursing','Topic 02: Palliative Care & End-of-Life Care','Short','What is palliative care? Write down its importance. [DU-June:24]'],
+['Emergency & Critical Care Nursing','Topic 02: Palliative Care & End-of-Life Care','Essay','Define end-of-life care. Explain its principles. [DU-Jan:12]'],
+['Emergency & Critical Care Nursing','Topic 02: Palliative Care & End-of-Life Care','Essay','Define palliative care. Explain its principles and importance at the end of life. [DU-Jan:15]'],
+['Emergency & Critical Care Nursing','Topic 02: Palliative Care & End-of-Life Care','Essay','Define euthanasia. What are its advantages and disadvantages? [DU-Jan:12]'],
+['Emergency & Critical Care Nursing','Topic 02: Palliative Care & End-of-Life Care','Essay','Define euthanasia. Describe the stages of dying. [DU-Jan:19]'],
+['Emergency & Critical Care Nursing','Topic 02: Palliative Care & End-of-Life Care','Essay','What do you mean by euthanasia and prolonging life? Describe clinical features and nursing management of a dying patient. [DU-Jan:19]'],
+['Emergency & Critical Care Nursing','Topic 03: Cardiac Emergency (Myocardial Infarction)','Short','Define myocardial infarction. Write down its causes and clinical features. [DU-Jan:17]'],
+['Emergency & Critical Care Nursing','Topic 03: Cardiac Emergency (Myocardial Infarction)','Short','Define MI. State its signs and symptoms. [DU-Jan:15]'],
+['Emergency & Critical Care Nursing','Topic 03: Cardiac Emergency (Myocardial Infarction)','Short','Write down the etiology of MI. [DU-Aug:13]'],
+['Emergency & Critical Care Nursing','Topic 03: Cardiac Emergency (Myocardial Infarction)','Short','How will you recognize MI? What are its complications? [DU-Jan:20]'],
+['Emergency & Critical Care Nursing','Topic 03: Cardiac Emergency (Myocardial Infarction)','Short','Define MI. List its complications. [DU-Jan:23]'],
+['Emergency & Critical Care Nursing','Topic 03: Cardiac Emergency (Myocardial Infarction)','Essay','Write down the nursing management of a myocardial infarction patient. [DU-Jan:20]'],
+['Emergency & Critical Care Nursing','Topic 03: Cardiac Emergency (Myocardial Infarction)','Essay','What are the risk factors, signs and symptoms of MI? Describe nursing interventions for extensive MI. [DU-Jan:22]'],
+['Emergency & Critical Care Nursing','Topic 05: Cardiac Arrhythmia','Short','Define cardiac arrhythmia. What are its causes? [DU-Jan:14]'],
+['Emergency & Critical Care Nursing','Topic 05: Cardiac Arrhythmia','Short','Define cardiac arrhythmia. Write down its causes and types. [DU-June:24, Jan:21]'],
+['Emergency & Critical Care Nursing','Topic 05: Cardiac Arrhythmia','Short','What is ventricular fibrillation? [DU-Jan:22]'],
+['Emergency & Critical Care Nursing','Topic 05: Cardiac Arrhythmia','Short','Write down the causes of ventricular fibrillation. [DU-Jan:22]'],
+['Emergency & Critical Care Nursing','Topic 05: Cardiac Arrhythmia','Short','What are the types of cardiac arrhythmias? [DU-June:24, Jan:23]'],
+['Emergency & Critical Care Nursing','Topic 05: Cardiac Arrhythmia','Short','As a CCU nurse, how will you assess a ventricular fibrillation patient? [DU-Jan:23]'],
+['Emergency & Critical Care Nursing','Topic 05: Cardiac Arrhythmia','Essay','Classify arrhythmia. How will you evaluate a patient with cardiac arrhythmia in the ICU? [DU-Jan:15]'],
+['Emergency & Critical Care Nursing','Topic 05: Cardiac Arrhythmia','Essay','What is arrhythmia? Write down causes and management of ventricular fibrillation. [DU-Jan:13]'],
+['Emergency & Critical Care Nursing','Topic 07: Cardiothoracic Surgery','Essay','What is open-heart surgery and how is it classified? Describe nursing care of a patient on mechanical ventilation. [DU-Jan:17]'],
+['Emergency & Critical Care Nursing','Topic 07: Cardiothoracic Surgery','Essay','What are the causes/indications for open-heart surgery? Describe nursing interventions for cardiac surgery patients. [DU-Jan:14]'],
+['Emergency & Critical Care Nursing','Topic 07: Cardiothoracic Surgery','Essay','What is cardiothoracic surgery? Explain nursing and medical interventions. [DU-Jan:22]'],
+['Emergency & Critical Care Nursing','Topic 09: Shock','Short','Mention the clinical features of hypovolemic shock. [DU-Jan:19]'],
+['Emergency & Critical Care Nursing','Topic 09: Shock','Short','Write down the causes of neurogenic shock. [DU-Jan:19]'],
+['Emergency & Critical Care Nursing','Topic 09: Shock','Short','What is shock? Classify different types of shock with examples.'],
+['Emergency & Critical Care Nursing','Topic 09: Shock','Short','What is septic shock? Enlist its complications. [DU-Jan:22]'],
+['Emergency & Critical Care Nursing','Topic 09: Shock','Essay','Define shock. What are its types and clinical features? How will you manage cardiogenic shock? [DU-Jan:19]'],
+['Emergency & Critical Care Nursing','Topic 09: Shock','Essay','A 50-year-old man arrives with cardiogenic shock. How will you manage this case as a critical care nurse? [DU-Jan:15]'],
+['Emergency & Critical Care Nursing','Topic 09: Shock','Essay','How will you manage a case of septic shock? [DU-Jan:17,16, Aug:13]'],
+['Emergency & Critical Care Nursing','Topic 09: Shock','Essay','Mention causes and clinical features of anaphylactic shock. Explain nursing interventions. [DU-Jan:23]'],
+['Emergency & Critical Care Nursing','Topic 09: Shock','Essay','Define cardiogenic shock. Explain its clinical manifestations, etiology and nursing interventions. [DU-June:24]'],
+['Emergency & Critical Care Nursing','Topic 14: Neurological Emergency','Short','Define coma. State common causes of coma. [DU-June:24, Jan:12]'],
+['Emergency & Critical Care Nursing','Topic 14: Neurological Emergency','Short','Define coma. [DU-June:24, Jan:23]'],
+['Emergency & Critical Care Nursing','Topic 14: Neurological Emergency','Short','List the risk factors of coma. [DU-Jan:23]'],
+['Emergency & Critical Care Nursing','Topic 14: Neurological Emergency','Short','Discuss the etiology of unconsciousness. [DU-June:24]'],
+['Emergency & Critical Care Nursing','Topic 14: Neurological Emergency','Essay','Define coma. How will you assess a comatose patient? Describe nursing intervention for spinal cord injury. [DU-June:24, Jan:17,16]'],
+['Emergency & Critical Care Nursing','Topic 14: Neurological Emergency','Essay','An 80-year-old man is admitted to ICU with diabetic coma. Write down nursing management. [DU-Jan:15]'],
+['Emergency & Critical Care Nursing','Topic 14: Neurological Emergency','Essay','A 70-year-old man is admitted to a medicine ward with coma. Write down nursing management. [DU-Jan:18]'],
+['Emergency & Critical Care Nursing','Topic 14: Neurological Emergency','Essay','Define coma. How will you manage a head-injury patient in the emergency department? [DU-Jan:13]'],
+['Emergency & Critical Care Nursing','Topic 21: Burn','Short','Write down the causes of burn and scald. Which type of burn is most dangerous and why? [DU-Jan:19]'],
+['Emergency & Critical Care Nursing','Topic 21: Burn','Short','Classify burns according to depth of tissue damage. State complications. [DU-Jan:20,16]'],
+['Emergency & Critical Care Nursing','Topic 21: Burn','Short','Mention causes of burn. What are the complications of third-degree burn? [DU-Jan:20]'],
+['Emergency & Critical Care Nursing','Topic 21: Burn','Short','Write down the factors/causes of burn. [DU-June:24, Jan:23]'],
+['Emergency & Critical Care Nursing','Topic 21: Burn','Short','How do you calculate body surface area burned using the Rule of Nines? [DU-Jan:23]'],
+['Emergency & Critical Care Nursing','Topic 21: Burn','Short','What are the complications of burn? [DU-June:24]'],
+['Emergency & Critical Care Nursing','Topic 21: Burn','Essay','Define burn and scald. Which burn is dangerous and why? How will you manage extensive burn? [DU-Jan:21,16]'],
+['Emergency & Critical Care Nursing','Topic 21: Burn','Essay','Write down the types of burn. Explain general interventions for a burn patient. [DU-Jan:23,22]'],
+['Emergency & Critical Care Nursing','Topic 21: Burn','Essay','Discuss the most dangerous type of burn and preventive measures. [DU-June:24]'],
+['Emergency & Critical Care Nursing','Topic 22: Suicide','Short','Explain the risk factors of suicide. [DU-July:12]'],
+['Emergency & Critical Care Nursing','Topic 22: Suicide','Short','What are the causes of suicide? Enlist the risk factors. [DU-Jan:21]'],
+['Emergency & Critical Care Nursing','Topic 22: Suicide','Essay','Define suicide. What are its signs and symptoms? Explain preventive measures. [DU-Jan:23,22,14]']
+];
+const subjects = [
+{name:'Medical & Surgical Nursing and Pathophysiology',icon:'🩺',color:'#6655d9'},
+{name:'Gerontological Nursing',icon:'🌿',color:'#159b72'},
+{name:'Community Health Nursing',icon:'🏡',color:'#2878c8'},
+{name:'Psychiatric Nursing',icon:'🧠',color:'#ba6a9a'},
+{name:'Emergency & Critical Care Nursing',icon:'🚑',color:'#e58b35'}
+];
+let questions = seed.map((x,i)=>({id:'q'+i,subject:x[0],topic:x[1],kind:x[2],text:x[3],done:false,custom:false}));
+const storeKey='nursingPlannerV2';
+try{const saved=JSON.parse(localStorage.getItem(storeKey)||'null');if(saved&&Array.isArray(saved.questions)){const seededIds=new Set(questions.map(q=>q.id));const byText=new Map(saved.questions.map(q=>[q.id,q]));questions=questions.map(q=>byText.get(q.id)||q);saved.questions.filter(q=>q.custom||!seededIds.has(q.id)).forEach(q=>{if(!questions.some(x=>x.id===q.id))questions.push(q)});if(saved.deadline)document.getElementById('deadline').value=saved.deadline}}catch(e){}
+let activeSubject='All';let collapsed={};
+function persist(){localStorage.setItem(storeKey,JSON.stringify({questions,deadline:document.getElementById('deadline').value}))}
+function stats(){let done=questions.filter(q=>q.done).length;document.getElementById('totalQ').textContent=questions.length;document.getElementById('doneQ').textContent=done;document.getElementById('leftQ').textContent=questions.length-done;document.getElementById('overall').textContent=(questions.length?Math.round(done/questions.length*100):0)+'%';let dl=daysToTarget();document.getElementById('daysLeft').textContent=dl<0?Math.abs(dl)+' days past target':dl+' days to target';document.getElementById('subjectSummary').textContent=subjects.length+' subjects · '+questions.length+' questions'}
+function daysToTarget(){const target=new Date(document.getElementById('deadline').value+'T12:00:00');const now=new Date();now.setHours(12,0,0,0);return Math.ceil((target-now)/86400000)}
+function renderSubjects(){let el=document.getElementById('subjectGrid');el.innerHTML='';subjects.forEach(s=>{let qs=questions.filter(q=>q.subject===s.name),done=qs.filter(q=>q.done).length,p=qs.length?Math.round(done/qs.length*100):0;let d=document.createElement('div');d.className='subject-card'+(activeSubject===s.name?' active':'');d.innerHTML=`<div class="subject-icon">${s.icon}</div><h3>${s.name}</h3><div class="tiny">${done} / ${qs.length} questions</div><div class="bar"><i style="width:${p}%;background:${s.color}"></i></div><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:13px">${p}%</b><span class="tiny">${qs.length-done} left</span></div>`;d.onclick=()=>{activeSubject=activeSubject===s.name?'All':s.name;renderAll()};el.appendChild(d)});}
+function renderQuestions(){let root=document.getElementById('topicList');root.innerHTML='';let title=activeSubject==='All'?'All questions':activeSubject;document.getElementById('listTitle').textContent=title;let kind=document.getElementById('kindFilter').value,status=document.getElementById('statusFilter').value,search=document.getElementById('search').value.toLowerCase();let filtered=questions.filter(q=>(activeSubject==='All'||q.subject===activeSubject)&&(kind==='all'||q.kind===kind)&&(status==='all'||(status==='done'?q.done:!q.done))&&(!search||(q.text+' '+q.topic+' '+q.subject).toLowerCase().includes(search)));let groups={};filtered.forEach(q=>(groups[q.topic]??=[]).push(q));if(!filtered.length){root.innerHTML='<div class="empty">No questions match these filters.</div>';return}Object.entries(groups).forEach(([topic,qs])=>{let done=qs.filter(q=>q.done).length,card=document.createElement('div');card.className='topic-card'+(collapsed[topic]?' collapsed':'');let head=document.createElement('div');head.className='topic-title';head.innerHTML=`<strong>${esc(topic)}</strong><span class="count">${done}/${qs.length} done</span><span class="chev">⌄</span>`;head.onclick=()=>{collapsed[topic]=!collapsed[topic];card.classList.toggle('collapsed')};let body=document.createElement('div');body.className='topic-body';qs.forEach(q=>{let row=document.createElement('div');row.className='qrow'+(q.done?' done':'');let cb=document.createElement('input');cb.type='checkbox';cb.checked=q.done;cb.setAttribute('aria-label','Mark question complete');cb.onchange=()=>{q.done=cb.checked;persist();renderAll()};let text=document.createElement('div');text.className='qtext';text.innerHTML=`<span class="tag ${q.kind.toLowerCase()}">${q.kind==='Short'?'SHORT':'ESSAY'}</span>${esc(q.text)}`;row.append(cb,text);body.appendChild(row)});card.append(head,body);root.appendChild(card)})}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderPlan(){
+ const root=document.getElementById('planList');root.innerHTML='';
+ const remaining=questions.filter(q=>!q.done);let days=Math.max(1,daysToTarget());
+ const today=new Date();today.setHours(12,0,0,0);
+ if(daysToTarget()<1){root.innerHTML='<div class="empty">Your target date has passed. Choose a new target date to generate a fresh plan.</div>';return}
+ if(!remaining.length){root.innerHTML='<div class="empty" style="color:var(--green)">🎉 All questions completed! Use the remaining days for revision.</div>';return}
+ days=Math.min(days,Math.max(1,remaining.length));
+ const hours=Number(document.getElementById('studyHours')?.value||4),capacity=hours*60;
+ // Group by subject + topic, then rotate topic groups so the schedule includes all subjects and topics throughout.
+ const groups={};remaining.forEach(q=>{const k=q.subject+'|||'+q.topic;(groups[k]??=[]).push(q)});
+ const bySubject=subjects.map(s=>Object.keys(groups).filter(k=>k.startsWith(s.name+'|||')).map(k=>({key:k,items:groups[k]})));
+ const topicQueue=[];let keep=true,round=0;while(keep){keep=false;bySubject.forEach(arr=>{if(arr[round]){topicQueue.push(arr[round]);keep=true}});round++}
+ const schedule=Array.from({length:days},()=>({items:[],minutes:0}));let cursor=0;
+ topicQueue.forEach(group=>group.items.forEach(q=>{const mins=q.kind==='Essay'?45:20;let best=-1,bestScore=Infinity;for(let j=0;j<days;j++){const idx=(cursor+j)%days;const score=schedule[idx].minutes/capacity + schedule[idx].items.length*0.0001;if(score<bestScore){bestScore=score;best=idx}}schedule[best].items.push(q);schedule[best].minutes+=mins;cursor=(best+1)%days}));
+ schedule.forEach((day,i)=>{if(!day.items.length)return;const date=new Date(today);date.setDate(today.getDate()+i);const label=i===0?'Today':date.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});const card=document.createElement('details');card.className='plan-day';if(i===0)card.open=true;const topics={};day.items.forEach(q=>{const key=q.subject+'|||'+q.topic;(topics[key]??=[]).push(q)});let html=`<summary class="daytop" style="cursor:pointer;list-style:none"><span>${label}</span><span>${day.items.length} questions · ${(day.minutes/60).toFixed(1)} h</span></summary>`;
+ Object.entries(topics).forEach(([key,qs])=>{const [subject,topic]=key.split('|||');html+=`<div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--line)"><b style="font-size:12px">${esc(subject)}</b><div class="tiny" style="margin:3px 0 5px">${esc(topic)}</div><ul>${qs.map(q=>`<li>${q.done?'✓ ':''}${esc(q.text)} <span class="tiny">(${q.kind==='Essay'?'45 min':'20 min'})</span></li>`).join('')}</ul></div>`});card.innerHTML=html;root.appendChild(card)});
+ const totalHours=remaining.reduce((n,q)=>n+(q.kind==='Essay'?45:20),0)/60;const maxDaily=Math.max(...schedule.map(d=>d.minutes/60));const note=document.createElement('div');note.className='notice';note.textContent=`All ${remaining.length} unfinished questions are scheduled across ${days} days. Estimated total study time: ${totalHours.toFixed(1)} hours. Daily target setting: ${hours} hours; busiest day: ${maxDaily.toFixed(1)} hours. If the busiest day exceeds your target, extend the deadline or increase daily hours.`;root.appendChild(note)
+}
+function renderAll(){stats();renderSubjects();renderQuestions();renderPlan();persist()}
+function setup(){let sel=document.getElementById('addSubject');subjects.forEach(s=>{let o=document.createElement('option');o.value=s.name;o.textContent=s.name;sel.appendChild(o)});['kindFilter','statusFilter','search'].forEach(id=>document.getElementById(id).addEventListener(id==='search'?'input':'change',renderQuestions));document.getElementById('replan').onclick=()=>{persist();renderAll()};document.getElementById('deadline').onchange=()=>{persist();renderAll()};document.getElementById('studyHours').onchange=()=>renderPlan();document.getElementById('addQuestion').onclick=()=>{let subject=sel.value,topic=document.getElementById('addTopic').value.trim(),kind=document.getElementById('addKind').value,text=document.getElementById('addText').value.trim();if(!topic||!text){alert('Please enter both a topic name and question.');return}questions.push({id:'custom-'+Date.now()+'-'+Math.random().toString(36).slice(2,7),subject,topic,kind,text,done:false,custom:true});document.getElementById('addTopic').value='';document.getElementById('addText').value='';activeSubject=subject;renderAll();window.scrollTo({top:document.querySelector('.content').offsetTop-10,behavior:'smooth'})};document.getElementById('exportBtn').onclick=()=>{let blob=new Blob([JSON.stringify({questions,deadline:document.getElementById('deadline').value},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='nursing-study-planner-backup.json';a.click();URL.revokeObjectURL(a.href)};document.getElementById('importFile').onchange=async e=>{let f=e.target.files[0];if(!f)return;try{let data=JSON.parse(await f.text());if(!Array.isArray(data.questions))throw Error('bad');questions=data.questions;if(data.deadline)document.getElementById('deadline').value=data.deadline;renderAll();alert('Backup imported successfully.')}catch(err){alert('Could not import this backup file.')}e.target.value=''};document.getElementById('resetBtn').onclick=()=>{if(confirm('Reset all completion checkmarks? Your questions will stay.')){questions.forEach(q=>q.done=false);renderAll()}};renderAll()}
+setup();
+</script></body></html>
